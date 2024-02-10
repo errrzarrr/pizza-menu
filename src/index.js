@@ -2,16 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-const dateTimeFormatOptions = {
-	hour: "2-digit",
-	minute: "2-digit",
-	hour12: false,
-};
-
-/* Language code for spanish for Dominican Republic, per ISO standard 639-1 + 3166-1 Alpha-2) */
-const LANG_CODE = "es-DO";
-
-const data = [
+const pizzaData = [
 	{
 		name: "Focaccia",
 		ingredients: "Bread with italian olive oil and rosemary",
@@ -63,6 +54,15 @@ const data = [
 	},
 ];
 
+const dateTimeFormatOptions = {
+	hour: "2-digit",
+	minute: "2-digit",
+	hour12: false,
+};
+
+/* Language code for spanish for Dominican Republic, per ISO standard 639-1 + 3166-1 Alpha-2) */
+const LANG_CODE = "es-DO";
+
 function App() {
 	return (
 		<div className="container">
@@ -83,7 +83,7 @@ function Header() {
 
 function Menu() {
 	// for conditional rendering
-	const elementsExists = data && data.length >= 1;
+	const elementsExists = pizzaData && pizzaData.length >= 1;
 	/* price={10} Pass a price (a number) this way —Moreso, pass anything which is NOT a string this way. */
 
 	return (
@@ -93,7 +93,7 @@ function Menu() {
 			{elementsExists ? (
 				<>
 					<ul className="pizzas">
-						{data.map((pizza) => (
+						{pizzaData.map((pizza) => (
 							<Pizza pizzaData={pizza} key={pizza.name} />
 						))}
 					</ul>
